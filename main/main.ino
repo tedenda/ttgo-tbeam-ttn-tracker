@@ -49,7 +49,6 @@ bool packetSent, packetQueued;
 // deep sleep support
 RTC_DATA_ATTR int bootCount = 0;
 esp_sleep_source_t wakeCause; // the reason we booted this time
-
 // -----------------------------------------------------------------------------
 // Application
 // -----------------------------------------------------------------------------
@@ -76,7 +75,7 @@ bool trySend() {
     buildPacket(txBuffer);
 
 #if LORAWAN_CONFIRMED_EVERY > 0
-    bool confirmed = (count % LORAWAN_CONFIRMED_EVERY == 0);
+    bool confirmed = (ttn_get_count() % LORAWAN_CONFIRMED_EVERY == 0);
 #else
     bool confirmed = false;
 #endif
