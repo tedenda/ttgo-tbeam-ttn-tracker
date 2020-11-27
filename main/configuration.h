@@ -41,7 +41,8 @@ void ttn_register(void (*callback)(uint8_t message));
 
 // Select which T-Beam board is being used. Only uncomment one.
 // #define T_BEAM_V07  // AKA Rev0 (first board released)
-#define T_BEAM_V10  // AKA Rev1 (second board released)
+// #define T_BEAM_V10  // AKA Rev1 (second board released)
+#define T_BEAM_V11  // AKA Rev1.1 (third board released)
 
 // Select the payload format. Change on TTN as well. Only uncomment one.
 #define PAYLOAD_USE_FULL
@@ -100,6 +101,9 @@ void ttn_register(void (*callback)(uint8_t message));
 #define BUTTON_PIN      39
 #elif defined(T_BEAM_V10)
 #define BUTTON_PIN      38
+#elif defined(T_BEAM_V11)
+#define LED_PIN         4
+#define BUTTON_PIN      38
 #endif
 
 // -----------------------------------------------------------------------------
@@ -119,7 +123,7 @@ void ttn_register(void (*callback)(uint8_t message));
 #if defined(T_BEAM_V07)
 #define GPS_RX_PIN      12
 #define GPS_TX_PIN      15
-#elif defined(T_BEAM_V10)
+#else
 #define GPS_RX_PIN      34
 #define GPS_TX_PIN      12
 #endif
@@ -138,8 +142,8 @@ void ttn_register(void (*callback)(uint8_t message));
 #define RESET_GPIO      23
 #endif
 #define DIO0_GPIO       26
-#define DIO1_GPIO       33 // Note: not really used on this board
-#define DIO2_GPIO       32 // Note: not really used on this board
+//#define DIO1_GPIO       33 // Note: not really used on this board
+//#define DIO2_GPIO       32 // Note: not really used on this board
 
 // -----------------------------------------------------------------------------
 // AXP192 (Rev1-specific options)

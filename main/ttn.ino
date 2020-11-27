@@ -43,7 +43,7 @@ const lmic_pinmap lmic_pins = {
     .nss = NSS_GPIO,
     .rxtx = LMIC_UNUSED_PIN,
     .rst = RESET_GPIO,
-    .dio = {DIO0_GPIO, DIO1_GPIO, DIO2_GPIO},
+    .dio = {DIO0_GPIO, LMIC_UNUSED_PIN, LMIC_UNUSED_PIN},
 };
 
 

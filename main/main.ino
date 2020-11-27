@@ -26,7 +26,7 @@
 #include <TinyGPS++.h>
 #include <Wire.h>
 
-#ifdef T_BEAM_V10
+#ifndef T_BEAM_V07
 #include "axp20x.h"
 AXP20X_Class axp;
 bool pmu_irq = false;
