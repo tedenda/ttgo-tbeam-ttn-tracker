@@ -379,16 +379,18 @@ void loop() {
       wasPressed = true;
       minPressMs = millis() + 3000;
     } 
-  } else if(wasPressed) {
-    // we just did a release
-    wasPressed = false;
+    
     if(millis() > minPressMs) {
       // held long enough
-      screen_print("Erasing prefs");
+      screen_print("Erasing prefs...");
       ttn_erase_prefs();
       delay(5000); // Give some time to read the screen
       ESP.restart();
     }
+
+  } else if(wasPressed) {
+    // we just did a release
+    wasPressed = false;
   }
 
   // Send every SEND_INTERVAL millis
