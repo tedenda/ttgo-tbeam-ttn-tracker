@@ -58,17 +58,17 @@ void ttn_register(void (*callback)(uint8_t message));
 #define DEBUG_PORT              Serial      // Serial debug port
 #define SERIAL_BAUD             115200      // Serial debug baud rate
 #define SLEEP_BETWEEN_MESSAGES  true        // Do sleep between messages
-#define SEND_INTERVAL           (5 * 60 * 1000) // Sleep for these many millis
+#define SEND_INTERVAL           (3 * 60 * 1000) // Sleep for these many millis
 #define MESSAGE_TO_SLEEP_DELAY  5000        // Time after message before going to sleep
 #define LOGO_DELAY              5000        // Time to show logo on first boot
-#define LORAWAN_PORT            10          // Port the messages will be sent to
+#define LORAWAN_PORT            1          // Port the messages will be sent to
 #define LORAWAN_CONFIRMED_EVERY 10          // Send confirmed message every these many messages (0 means never)
 #define LORAWAN_SF              DR_SF7      // Spreading factor (recommended DR_SF7 for ttn network map purposes, DR_SF10 works for slow moving trackers)
 #define LORAWAN_ADR             0           // Enable ADR
 #define REQUIRE_RADIO           true        // If true, we will fail to start if the radio is not found
 
 // If not defined, we will wait for lock forever
-#define GPS_WAIT_FOR_LOCK       (60 * 1000)  // Wait after every boot for GPS lock (may need longer than 5s because we turned the gps off during deep sleep)
+#define GPS_WAIT_FOR_LOCK       (2 * 60 * 1000)  // Wait after every boot for GPS lock (may need longer than 5s because we turned the gps off during deep sleep)
 
 // -----------------------------------------------------------------------------
 // DEBUG
