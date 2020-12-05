@@ -128,7 +128,7 @@ void screen_setup() {
 void screen_loop() {
     if(!display) return;
 
-    #ifdef T_BEAM_V10
+    #ifndef T_BEAM_V07 
     if (axp192_found && pmu_irq) {
         pmu_irq = false;
         axp.readIRQ();
