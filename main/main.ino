@@ -400,10 +400,14 @@ void loop() {
     if (trySend()) {
       last = millis();
       first = false;
-      Serial.println("TRANSMITTED");
+      if (packetSent){
+        Serial.println("TRANSMITTED");  
+      } else {
+        Serial.println("NOT TRANSMITTED");  
+      }
     } else {
       if (first) {
-        screen_print("Waiting GPS lock\n");
+        screen_print("Waiting for GPS-lock\n");
         first = false;
       }
 #ifdef GPS_WAIT_FOR_LOCK
