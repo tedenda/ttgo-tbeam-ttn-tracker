@@ -11,5 +11,13 @@
         "limits": "cpp",
         "sstream": "cpp",
         "system_error": "cpp"
-    }
+    },
+    "cSpell.words": [
+        "Chae",
+        "Kooijman",
+        "LMIC",
+        "MCCI",
+        "OTAA",
+        "Xose"
+    ]
 }
