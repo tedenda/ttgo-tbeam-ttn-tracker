@@ -42,7 +42,7 @@ void _screen_header() {
     display->drawString(0, 2, buffer);
 
     // Datetime (if the axp192 PMIC is present, alternate between powerstats and time)
-    if(axp192_found && millis()%8000 < 3000){
+    if(axp192_found && millis()%8000 < 3000 | true){
         snprintf(buffer, sizeof(buffer), "%.1fV %.0fmA", axp.getBattVoltage()/1000, axp.getBattChargeCurrent() - axp.getBattDischargeCurrent());
 
     } else {
