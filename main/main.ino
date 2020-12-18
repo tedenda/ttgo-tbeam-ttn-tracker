@@ -101,9 +101,12 @@ void doDeepSleep(uint64_t msecToWake)
     LMIC_shutdown(); // cleanly shutdown the radio
     
     if(axp192_found) {
-        // turn on after initial testing with real hardware
+      #if LORA_SLEEP
         axp.setPowerOutPut(AXP192_LDO2, AXP202_OFF); // LORA radio
+      #endif
+      #if GPS_SLEEP
         axp.setPowerOutPut(AXP192_LDO3, AXP202_OFF); // GPS main power
+      #endif
     }
 
     // FIXME - use an external 10k pulldown so we can leave the RTC peripherals powered off
@@ -326,9 +329,12 @@ void setup() {
   DEBUG_MSG(APP_NAME " " APP_VERSION "\n");
 
   // Don't init display if we don't have one or we are waking headless due to a timer event
-  if(wakeCause == ESP_SLEEP_WAKEUP_TIMER)
-    ssd1306_found = false; // forget we even have the hardware
-
+  if (OLED_WAKEUP == false){
+    if(wakeCause == ESP_SLEEP_WAKEUP_TIMER){
+      ssd1306_found = false; // forget we even have the hardware
+    }  
+  }
+  
   if(ssd1306_found)
     screen_setup();
 
@@ -375,6 +381,9 @@ void loop() {
   static uint32_t minPressMs; // what tick should we call this press long enough
   if(!digitalRead(BUTTON_PIN)) {
     if(!wasPressed) { // just started a new press
+      screen_setup();
+      screen_update();
+      screen_print("Waiting for update");
       Serial.println("pressing");
       wasPressed = true;
       minPressMs = millis() + 3000;
